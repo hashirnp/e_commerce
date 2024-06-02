@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "729959579548",
+    "project_id": "off-course-practice",
+    "storage_bucket": "off-course-practice.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729959579548:android:289bad44ca56ca3431d259",
+        "android_client_info": {
+          "package_name": "com.example.e_commerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFG-lmQIl8clbU_Pj_dLn7FM-zV6IoJhY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729959579548:android:0e488c55a01225fc31d259",
+        "android_client_info": {
+          "package_name": "com.example.firebase_social_media"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFG-lmQIl8clbU_Pj_dLn7FM-zV6IoJhY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
