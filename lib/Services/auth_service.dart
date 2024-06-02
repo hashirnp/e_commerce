@@ -99,7 +99,8 @@ class AuthService {
 
   Future<String> updateUser({required UserModel model, XFile? image}) async {
     try {
-      if (image!.path!= " ") {
+      
+      if (image!.path.isNotEmpty) {
         log("adding Image ${model.uid}");
         final status = await addImage(file: image, uid: model.uid);
         model.image = status.split(" ")[1];
