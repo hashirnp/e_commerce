@@ -14,7 +14,22 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  late AnimationController animationController;
+  @override
+  void dispose() {
+    super.dispose();
+    animationController.dispose();
+  }
+
+  @override
+  void initState() {
+    animationController =
+        AnimationController(duration: const Duration(seconds: 1), vsync: this);
+    animationController.repeat();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -54,18 +69,26 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         body: Consumer<ProductProvider>(builder: (context, val, _) {
+          if (val.isLoading) {
+            return  Center(
+              child: CircularProgressIndicator(
+                valueColor: animationController
+                    .drive(ColorTween(begin: Colors.black, end: Colors.red)),
+              ),
+            );
+          }
           return SafeArea(
               child: ListView.builder(
-                itemCount: val.products.length,
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.all(10),
-                itemBuilder: (ctx, index) {
-                  final product = val.products[index];
-              
-                  return ItemWidget(product: product);
-                },
-              ));
+            itemCount: val.products.length,
+            shrinkWrap: true,
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.all(10),
+            itemBuilder: (ctx, index) {
+              final product = val.products[index];
+
+              return ItemWidget(product: product);
+            },
+          ));
         }),
       ),
     );
@@ -84,8 +107,9 @@ class _HomeScreenState extends State<HomeScreen> {
         break;
 
       case 'Profile':
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (ctx) => const ConnectivityWrapper(child: ProfileScreen())));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (ctx) =>
+                const ConnectivityWrapper(child: ProfileScreen())));
         break;
     }
   }
