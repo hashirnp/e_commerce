@@ -88,7 +88,7 @@ class ItemWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "INR ${product.price!} /-",
+                    "\$${product.price!.toStringAsFixed(2)}",
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,

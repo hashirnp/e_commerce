@@ -122,7 +122,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             controller.text;
             
                                         isUpdateNotifier.value = true;
-                                        log(provider.userModel!.name);
                                         provider.updateStat();
                                         Navigator.of(context).pop();
                                       }
